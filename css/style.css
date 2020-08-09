@@ -7,7 +7,9 @@ font-family: 'Open Sans', sans-serif; */
 
 :root {
     --color-primary: #ff0000;
+    --color-shadow: rgba(255, 0, 0, 0.3);
     --color-bg: #28272C;
+    --font2: 'Nunito Sans', sans-serif;
 }
 
 body {
@@ -36,7 +38,7 @@ body {
 .section-title {
     font-size: 35px;
     text-transform: uppercase;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,9 +52,15 @@ body {
     width: 50px;
     height: 3px;
     background-color: var(--color-primary);
+    box-shadow: 0 2px 3px var(--color-shadow);
     border-radius: 8px;
     margin: 0 20px;
 }
+
+
+
+
+
 
 
 .header {
@@ -64,7 +72,15 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
+    transition: 0.5s;
 }
+
+.header--sticky {
+    height: 80px;
+    background: #222;
+    box-shadow: 0 3px 6px rgba(0,0,0, 0.5);
+}
+
 .header .container {
     display: flex;
     justify-content: space-between;
@@ -74,7 +90,7 @@ body {
 
 .logo {
     font-size: 35px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
@@ -110,7 +126,7 @@ body {
     text-decoration: none;
     color: #fff;
     padding: 0 40px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
@@ -148,7 +164,7 @@ body {
 
 .hero__title {
     font-size: 90px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     text-transform: uppercase;
     color: #fff;
     font-weight: 900;
@@ -159,7 +175,7 @@ body {
 .hero__text {
     max-width: 920px;
     font-size: 16px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-weight: bold;
     text-align: center;
     color: #fff;
@@ -182,7 +198,7 @@ body {
     border-radius: 40px;
     justify-content: center;
     align-items: center;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
@@ -210,7 +226,7 @@ body {
     left: 50%;
     bottom: 0;
     transform: translate(-50%, 50%);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px var(--color-shadow);
 }
 
 .section-blog {}
@@ -221,7 +237,7 @@ body {
 .blog-box__title {
     font-size: 19px;
     text-transform: uppercase;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-weight: normal;
 }
 .blog-box__text {
@@ -236,7 +252,7 @@ body {
     border-radius: 40px;
     display: inline-flex;
     text-decoration: none;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-weight: bold;
     text-transform: uppercase;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
@@ -263,7 +279,7 @@ body {
 .service-box__title {
     font-size: 19px;
     text-transform: uppercase;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-weight: normal;
     color: #fff;
 }
@@ -281,14 +297,12 @@ body {
     border-radius: 40px;
     display: inline-flex;
     text-decoration: none;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-weight: bold;
     text-transform: uppercase;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     margin-top: 10px;
 }
-
-
 
 
 
@@ -299,7 +313,7 @@ body {
 
 .footer-logo {
     font-size: 25px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
@@ -335,7 +349,7 @@ body {
     margin-bottom: 5px;
 }
 .footer-menu__link {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--font2);
     font-size: 14px;
     text-transform: uppercase;
     color: #fff;
@@ -348,14 +362,87 @@ body {
     color: #d1d1d1;
 }
 
-.form {}
-.form-row {
+
+
+
+.form {
+    background-image: url(../images/form-photo.png);
+    background-size: 50% auto;
+    background-repeat: no-repeat;
+    padding-left: calc(50% + 20px);
+}
+.form__row {
     margin-bottom: 20px;
 }
-.form__btn {}
-.form__input {}
+.form__label {
+    position: absolute;
+    left: -999999px;
+}
+.form__input,
 .form__textarea {
     height: 38px;
-    border
+    border-radius: 8px;
+    border: 1px solid #d1d1d1;
+    padding: 0 15px;
+    width: 100%;
+    font-size: 16px;
+}
 
+.form__textarea {
+    min-height: 140px;
+    padding: 15px;
+    resize: vertical;
+    max-height: 300px;
+}
+
+.form__checkbox {
+    display: flex;
+}
+.form__checkbox-input {
+    margin-right: 10px;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 8px;
+    border: 1px solid #d1d1d1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.form__checkbox-input:checked {
+    background-image: url(../images/icon-check.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.form__checkbox-label {
+    font-size: 10px;
+    line-height: 1.8;
+    color: #888
+}
+
+.form__input:focus,
+.form__textarea:focus,
+.form__checkbox-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow:
+            inset 0 0 0 1px var(--color-primary),
+            0 0 6px var(--color-shadow);
+}
+
+.form__row--last {
+    display: flex;
+    justify-content: flex-end;
+}
+.form__btn {
+    padding: 13px 50px;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-family: var(--font2);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 40px;
+    background: none;
+    box-shadow: 0 3px 6px var(--color-shadow);
 }
